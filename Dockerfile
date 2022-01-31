@@ -23,6 +23,8 @@ RUN apt install nodejs -y
 
 RUN apt-get install npm -y
 
+RUN npm install -g npm
+
 RUN node -v && npm -v
 
 RUN npm install -g firebase-tools
