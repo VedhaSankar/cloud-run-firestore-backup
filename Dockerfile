@@ -12,9 +12,9 @@ ADD . ./app
 
 WORKDIR /app
 
-ADD modern-diode-339415-b6e71cbc756a.json /app/
+# ADD modern-diode-339415-b6e71cbc756a.json /app/
 
-RUN export GOOGLE_APPLICATION_CREDENTIALS="/app/modern-diode-339415-b6e71cbc756a.json"
+# RUN export GOOGLE_APPLICATION_CREDENTIALS="/app/modern-diode-339415-b6e71cbc756a.json"
 
 CMD [ "./backup.sh" ] 
 # RUN ./backup.sh
