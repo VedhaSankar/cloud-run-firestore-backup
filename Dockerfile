@@ -4,17 +4,16 @@ RUN apt update && apt-get update && apt install wget
 
 RUN wget https://firebase.tools/bin/linux/latest
 
-RUN ls
-
 RUN mv latest firebase && chmod +x firebase && mv firebase /usr/local/bin/firebase 
+
+RUN apt-get install -y python3-pip python-dev build-essential
 
 ADD . ./app
 
 WORKDIR /app
 
-# ADD modern-diode-339415-b6e71cbc756a.json /app/
+RUN pip3 install -r requirements.txt
 
-# RUN export GOOGLE_APPLICATION_CREDENTIALS="/app/modern-diode-339415-b6e71cbc756a.json"
+EXPOSE 8500
 
-CMD [ "./backup.sh" ] 
-# RUN ./backup.sh
+CMD [ "python3", "app.py" ] 
