@@ -1,33 +1,17 @@
-FROM google/cloud-sdk:latest AS base
+FROM google/cloud-sdk:latest
 
 ADD . ./app
 
 WORKDIR /app
 
-# RUN apt-get update
+# SHELL ["/bin/bash", "--login", "-c"]
 
-# RUN apt-get upgrade -y
+RUN apt update && apt-get update && apt install wget
+# RUN npm install -g firebase-tools
 
-# RUN apt install nodejs -y
+RUN wget https://firebase.tools/bin/linux/latest
 
-# RUN apt-get install npm -y
-
-# nvm installation
-SHELL ["/bin/bash", "--login", "-c"]
-
-# RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-# RUN nvm install 8.10.0
-# RUN nvm use 8.10.0
-
-RUN apt install nodejs -y
-
-RUN apt-get install npm -y
-
-RUN npm install -g npm
-
-RUN node -v && npm -v
-
-RUN npm install -g firebase-tools
+RUN ls
 
 ADD modern-diode-339415-b6e71cbc756a.json /app/
 
